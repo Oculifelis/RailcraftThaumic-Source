@@ -1,0 +1,31 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:perditio",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 2
+    }
+  ],
+  "key": {
+    "V": "thaumaturge:ingot_void",
+    "E": "thaumaturge:eldritch_stone"
+  },
+  "pattern": [
+    "V V",
+    "VEV",
+    "V V"
+  ],
+  "research": {
+    "entry": "arcanelocomotion:eldritch_line",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:eldritch_rail",
+    "count": 16
+  },
+  "vis": 50
+}

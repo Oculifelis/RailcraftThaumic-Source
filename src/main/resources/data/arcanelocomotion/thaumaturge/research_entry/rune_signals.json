@@ -1,0 +1,54 @@
+{
+  "category": "arcanelocomotion:railcraft",
+  "name": "research.arcanelocomotion.rune_signals.title",
+  "parents": [
+    "arcanelocomotion:essentia_freight"
+  ],
+  "column": 3,
+  "row": 1,
+  "icons": [
+    "arcanelocomotion:rune_signal"
+  ],
+  "stages": [
+    {
+      "text": "research.arcanelocomotion.rune_signals.stage_0",
+      "required_knowledge": [
+        {
+          "type": "theory",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        },
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.arcanelocomotion.rune_signals.stage_1",
+      "recipes": [
+        "arcanelocomotion:arcane/rune_signal"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:sensus",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:motus",
+      "amount": 3
+    },
+    {
+      "aspect": "thaumaturge:potentia",
+      "amount": 3
+    }
+  ],
+  "complexity": 2
+}

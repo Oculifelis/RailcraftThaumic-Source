@@ -1,0 +1,33 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 8
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 8
+    }
+  ],
+  "key": {
+    "R": "thaumaturge:vis_resonator",
+    "A": "thaumaturge:crystal_aer",
+    "L": "railcraft:electric_locomotive",
+    "P": "thaumaturge:plate_thaumium",
+    "B": "thaumaturge:vis_battery"
+  },
+  "pattern": [
+    " R ",
+    "ALA",
+    "PBP"
+  ],
+  "research": {
+    "entry": "arcanelocomotion:aura_locomotive",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:aura_locomotive"
+  },
+  "vis": 60
+}

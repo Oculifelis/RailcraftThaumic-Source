@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "arcanelocomotion:void_steel_plating"
+    }
+  },
+  "pattern": [
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:void_steel_plating_slab",
+    "count": 6
+  }
+}

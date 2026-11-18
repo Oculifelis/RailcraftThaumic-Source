@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "arcanelocomotion:runed_abyssal_bricks"
+  },
+  "result": {
+    "id": "arcanelocomotion:runed_abyssal_bricks_wall",
+    "count": 1
+  }
+}

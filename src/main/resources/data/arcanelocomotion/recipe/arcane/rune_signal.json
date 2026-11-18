@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 2
+    },
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 2
+    }
+  ],
+  "key": {
+    "S": "thaumaturge:stone_arcane_brick",
+    "X": "thaumaturge:salis_mundus",
+    "R": "minecraft:redstone",
+    "C": "railcraft:receiver_circuit"
+  },
+  "pattern": [
+    "SXS",
+    "RCR",
+    "SSS"
+  ],
+  "research": {
+    "entry": "arcanelocomotion:rune_signals",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:rune_signal"
+  },
+  "vis": 25
+}

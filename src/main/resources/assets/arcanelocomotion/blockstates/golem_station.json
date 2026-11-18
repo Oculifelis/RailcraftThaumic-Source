@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "unload=false": {
+      "model": "arcanelocomotion:block/golem_station"
+    },
+    "unload=true": {
+      "model": "arcanelocomotion:block/golem_station"
+    }
+  }
+}

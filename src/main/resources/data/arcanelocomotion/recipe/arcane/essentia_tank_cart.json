@@ -1,0 +1,30 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 2
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 2
+    }
+  ],
+  "key": {
+    "P": "thaumaturge:plate_brass",
+    "J": "thaumaturge:jar_normal",
+    "M": "minecraft:minecart"
+  },
+  "pattern": [
+    "PJP",
+    " M "
+  ],
+  "research": {
+    "entry": "arcanelocomotion:essentia_freight",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:essentia_tank_cart"
+  },
+  "vis": 25
+}

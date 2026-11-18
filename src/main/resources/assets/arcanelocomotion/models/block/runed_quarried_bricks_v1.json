@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "arcanelocomotion:block/runed_quarried_bricks_1"
+  }
+}

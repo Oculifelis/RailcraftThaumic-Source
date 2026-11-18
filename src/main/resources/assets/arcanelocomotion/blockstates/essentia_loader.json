@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "unload=false": {
+      "model": "arcanelocomotion:block/essentia_loader"
+    },
+    "unload=true": {
+      "model": "arcanelocomotion:block/essentia_loader_unload"
+    }
+  }
+}

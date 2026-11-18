@@ -1,0 +1,36 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:perditio",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 2
+    }
+  ],
+  "key": {
+    "P": {
+      "item": "thaumaturge:plate_void"
+    },
+    "E": {
+      "item": "thaumaturge:eldritch_stone"
+    },
+    "M": {
+      "item": "minecraft:minecart"
+    }
+  },
+  "pattern": [
+    "PEP",
+    " M "
+  ],
+  "research": {
+    "entry": "arcanelocomotion:eldritch_line",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:eldritch_cart"
+  },
+  "vis": 50
+}

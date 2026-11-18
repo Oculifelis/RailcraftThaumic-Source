@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "minecraft:bricks"
+    },
+    "C": {
+      "item": "thaumaturge:ingot_thaumium"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SCS",
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:thaumium_banded_bricks",
+    "count": 8
+  }
+}

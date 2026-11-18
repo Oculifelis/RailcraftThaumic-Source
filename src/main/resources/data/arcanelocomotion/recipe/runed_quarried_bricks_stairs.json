@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": "arcanelocomotion:runed_quarried_bricks"
+  },
+  "pattern": [
+    "S  ",
+    "SS ",
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:runed_quarried_bricks_stairs",
+    "count": 4
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "railcraft:quarried_bricks"
+    },
+    "C": {
+      "item": "thaumaturge:salis_mundus"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SCS",
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:runed_quarried_bricks",
+    "count": 8
+  }
+}

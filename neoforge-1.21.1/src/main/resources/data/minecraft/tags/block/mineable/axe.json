@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "arcanelocomotion:golem_station",
+    "arcanelocomotion:greatwood_sleepers",
+    "arcanelocomotion:greatwood_sleepers_slab",
+    "arcanelocomotion:greatwood_sleepers_stairs",
+    "arcanelocomotion:greatwood_sleepers_wall"
+  ]
+}

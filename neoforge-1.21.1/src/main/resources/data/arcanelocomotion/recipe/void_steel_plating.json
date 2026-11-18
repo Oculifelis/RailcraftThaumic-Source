@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "railcraft:steel_plate"
+    },
+    "C": {
+      "item": "thaumaturge:nugget_void"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SCS",
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:void_steel_plating",
+    "count": 8
+  }
+}

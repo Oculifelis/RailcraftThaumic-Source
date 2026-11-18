@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "arcanelocomotion:block/arcane_steel_plating",
+    "top": "arcanelocomotion:block/arcane_steel_plating",
+    "side": "arcanelocomotion:block/arcane_steel_plating"
+  }
+}

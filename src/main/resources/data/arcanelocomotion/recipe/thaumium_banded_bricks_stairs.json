@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": "arcanelocomotion:thaumium_banded_bricks"
+  },
+  "pattern": [
+    "S  ",
+    "SS ",
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:thaumium_banded_bricks_stairs",
+    "count": 4
+  }
+}

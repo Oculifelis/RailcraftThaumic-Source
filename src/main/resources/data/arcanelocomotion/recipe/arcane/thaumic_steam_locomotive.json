@@ -1,0 +1,37 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ignis",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 8
+    }
+  ],
+  "key": {
+    "J": "thaumaturge:jar_normal",
+    "A": "thaumaturge:alchemical_construct",
+    "L": "railcraft:steam_locomotive",
+    "P": "thaumaturge:plate_thaumium",
+    "B": "thaumaturge:bellows"
+  },
+  "pattern": [
+    " J ",
+    "ALA",
+    "PBP"
+  ],
+  "research": {
+    "entry": "arcanelocomotion:thaumic_steam_locomotive",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:thaumic_steam_locomotive"
+  },
+  "vis": 60
+}

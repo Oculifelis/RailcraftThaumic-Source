@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": "railcraft:abyssal_bricks",
+    "C": "thaumaturge:salis_mundus"
+  },
+  "pattern": [
+    "SSS",
+    "SCS",
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:runed_abyssal_bricks",
+    "count": 8
+  }
+}

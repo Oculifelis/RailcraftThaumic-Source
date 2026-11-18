@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/rail_flat",
+  "textures": {
+    "rail": "arcanelocomotion:block/spectral_rail"
+  },
+  "render_type": "minecraft:translucent"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "arcanelocomotion:runed_quarried_bricks"
+  },
+  "result": {
+    "id": "arcanelocomotion:runed_quarried_bricks_stairs",
+    "count": 1
+  }
+}

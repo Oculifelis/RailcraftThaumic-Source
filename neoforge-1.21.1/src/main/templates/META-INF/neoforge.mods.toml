@@ -1,0 +1,40 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="Oculifelis"
+credits="Inspired by the Thaumcraft module of Railcraft 1.7.10 by CovertJaguar (all code and textures here are new). Railcraft Reborn by Sm0keySa1m0n, Edivad99 and contributors. Thaumaturge by Leclowndu93150 and contributors."
+description='''
+Brings back old Railcraft's Thaumcraft module for Railcraft Reborn and Thaumaturge:
+Thaumium and Void Metal crowbars, a Railcraft tab in the Thaumonomicon, aspects on Railcraft items and carts,
+and the essentia-fired Thaumic Steam Locomotive that the original module left unfinished.
+'''
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="[${neo_version},)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="railcraft"
+    type="required"
+    versionRange="${railcraft_version_range}"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="thaumaturge"
+    type="required"
+    versionRange="${thaumaturge_version_range}"
+    ordering="AFTER"
+    side="BOTH"

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "arcanelocomotion:arcane_steel_plating",
+  "result": {
+    "id": "arcanelocomotion:arcane_steel_plating_wall",
+    "count": 1
+  }
+}

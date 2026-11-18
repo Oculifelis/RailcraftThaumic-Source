@@ -1,0 +1,51 @@
+{
+  "category": "arcanelocomotion:railcraft",
+  "name": "research.arcanelocomotion.thaumium_crowbar.title",
+  "parents": [
+    "arcanelocomotion:railcraft_arcana",
+    "thaumaturge:metallurgy"
+  ],
+  "column": -1,
+  "row": 0,
+  "icons": [
+    "arcanelocomotion:thaumium_crowbar"
+  ],
+  "stages": [
+    {
+      "text": "research.arcanelocomotion.thaumium_crowbar.stage_0",
+      "required_knowledge": [
+        {
+          "type": "theory",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        },
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.arcanelocomotion.thaumium_crowbar.stage_1",
+      "recipes": [
+        "arcanelocomotion:arcane/thaumium_crowbar"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:instrumentum",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:machina",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:motus",
+      "amount": 3
+    }
+  ],
+  "complexity": 2
+}

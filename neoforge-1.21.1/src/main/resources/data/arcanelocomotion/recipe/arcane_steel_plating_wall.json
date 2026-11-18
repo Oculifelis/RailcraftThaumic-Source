@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "arcanelocomotion:arcane_steel_plating"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:arcane_steel_plating_wall",
+    "count": 6
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "category": "arcanelocomotion:railcraft",
+  "name": "research.arcanelocomotion.golem_station.title",
+  "parents": [
+    "arcanelocomotion:rune_signals",
+    "thaumaturge:seal_empty"
+  ],
+  "column": 3,
+  "row": 3,
+  "icons": [
+    "arcanelocomotion:golem_station"
+  ],
+  "stages": [
+    {
+      "text": "research.arcanelocomotion.golem_station.stage_0",
+      "required_knowledge": [
+        {
+          "type": "theory",
+          "category": "thaumaturge:golemancy",
+          "amount": 1
+        },
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.arcanelocomotion.golem_station.stage_1",
+      "recipes": [
+        "arcanelocomotion:arcane/golem_station"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:humanus",
+      "amount": 3
+    },
+    {
+      "aspect": "thaumaturge:machina",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:motus",
+      "amount": 3
+    }
+  ],
+  "complexity": 2
+}

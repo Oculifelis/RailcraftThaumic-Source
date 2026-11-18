@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 2
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 2
+    }
+  ],
+  "key": {
+    "P": "thaumaturge:plate_brass",
+    "T": "thaumaturge:tube",
+    "J": "thaumaturge:jar_normal",
+    "H": "minecraft:hopper"
+  },
+  "pattern": [
+    "PTP",
+    "TJT",
+    "PHP"
+  ],
+  "research": {
+    "entry": "arcanelocomotion:essentia_freight",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:essentia_loader"
+  },
+  "vis": 30
+}

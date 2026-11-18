@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "arcanelocomotion:essentia_loader",
+    "arcanelocomotion:rune_signal",
+    "arcanelocomotion:arcane_booster_track",
+    "arcanelocomotion:eldritch_rail",
+    "arcanelocomotion:arcane_steel_plating",
+    "arcanelocomotion:arcane_steel_plating_slab",
+    "arcanelocomotion:arcane_steel_plating_stairs",
+    "arcanelocomotion:arcane_steel_plating_wall",
+    "arcanelocomotion:void_steel_plating",
+    "arcanelocomotion:void_steel_plating_slab",
+    "arcanelocomotion:void_steel_plating_stairs",
+    "arcanelocomotion:void_steel_plating_wall",
+    "arcanelocomotion:runed_abyssal_bricks",
+    "arcanelocomotion:runed_abyssal_bricks_slab",
+    "arcanelocomotion:runed_abyssal_bricks_stairs",
+    "arcanelocomotion:runed_abyssal_bricks_wall",
+    "arcanelocomotion:runed_quarried_bricks",
+    "arcanelocomotion:runed_quarried_bricks_slab",
+    "arcanelocomotion:runed_quarried_bricks_stairs",
+    "arcanelocomotion:runed_quarried_bricks_wall",
+    "arcanelocomotion:thaumium_banded_bricks",
+    "arcanelocomotion:thaumium_banded_bricks_slab",
+    "arcanelocomotion:thaumium_banded_bricks_stairs",
+    "arcanelocomotion:thaumium_banded_bricks_wall"
+  ]
+}

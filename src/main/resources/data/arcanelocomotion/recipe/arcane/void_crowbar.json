@@ -1,0 +1,26 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:perditio",
+      "amount": 8
+    }
+  ],
+  "key": {
+    "I": "#c:ingots/void_metal",
+    "R": "#c:dyes/red"
+  },
+  "pattern": [
+    " RI",
+    "RIR",
+    "IR "
+  ],
+  "research": {
+    "entry": "arcanelocomotion:void_crowbar",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:void_crowbar"
+  },
+  "vis": 40
+}

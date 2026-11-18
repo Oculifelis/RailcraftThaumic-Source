@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "arcanelocomotion:thaumium_banded_bricks"
+  },
+  "result": {
+    "id": "arcanelocomotion:thaumium_banded_bricks_stairs",
+    "count": 1
+  }
+}

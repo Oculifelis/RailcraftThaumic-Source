@@ -1,0 +1,68 @@
+{
+  "category": "arcanelocomotion:railcraft",
+  "name": "research.arcanelocomotion.arcane_masonry.title",
+  "parents": [
+    "arcanelocomotion:railcraft_arcana"
+  ],
+  "column": -3,
+  "row": -2,
+  "icons": [
+    "arcanelocomotion:runed_abyssal_bricks"
+  ],
+  "stages": [
+    {
+      "text": "research.arcanelocomotion.arcane_masonry.stage_0",
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.arcanelocomotion.arcane_masonry.stage_1",
+      "recipes": [
+        "arcanelocomotion:arcane_steel_plating",
+        "arcanelocomotion:arcane_steel_plating_slab",
+        "arcanelocomotion:arcane_steel_plating_stairs",
+        "arcanelocomotion:arcane_steel_plating_wall",
+        "arcanelocomotion:void_steel_plating",
+        "arcanelocomotion:void_steel_plating_slab",
+        "arcanelocomotion:void_steel_plating_stairs",
+        "arcanelocomotion:void_steel_plating_wall",
+        "arcanelocomotion:greatwood_sleepers",
+        "arcanelocomotion:greatwood_sleepers_slab",
+        "arcanelocomotion:greatwood_sleepers_stairs",
+        "arcanelocomotion:greatwood_sleepers_wall",
+        "arcanelocomotion:runed_abyssal_bricks",
+        "arcanelocomotion:runed_abyssal_bricks_slab",
+        "arcanelocomotion:runed_abyssal_bricks_stairs",
+        "arcanelocomotion:runed_abyssal_bricks_wall",
+        "arcanelocomotion:runed_quarried_bricks",
+        "arcanelocomotion:runed_quarried_bricks_slab",
+        "arcanelocomotion:runed_quarried_bricks_stairs",
+        "arcanelocomotion:runed_quarried_bricks_wall",
+        "arcanelocomotion:thaumium_banded_bricks",
+        "arcanelocomotion:thaumium_banded_bricks_slab",
+        "arcanelocomotion:thaumium_banded_bricks_stairs",
+        "arcanelocomotion:thaumium_banded_bricks_wall"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:terra",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:fabrico",
+      "amount": 3
+    }
+  ],
+  "complexity": 1
+}

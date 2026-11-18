@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 2
+    },
+    {
+      "aspect": "thaumaturge:ignis",
+      "amount": 2
+    }
+  ],
+  "key": {
+    "I": "thaumaturge:ingot_thaumium",
+    "M": "thaumaturge:tube",
+    "R": "minecraft:redstone"
+  },
+  "pattern": [
+    "I I",
+    "IMI",
+    "IRI"
+  ],
+  "research": {
+    "entry": "arcanelocomotion:arcane_booster",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:arcane_booster_track",
+    "count": 6
+  },
+  "vis": 30
+}

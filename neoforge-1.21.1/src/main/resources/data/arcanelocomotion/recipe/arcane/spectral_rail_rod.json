@@ -1,0 +1,37 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    }
+  ],
+  "key": {
+    "A": {
+      "item": "thaumaturge:crystal_aer"
+    },
+    "O": {
+      "item": "thaumaturge:crystal_ordo"
+    },
+    "R": {
+      "item": "thaumaturge:wand_rod_greatwood"
+    }
+  },
+  "pattern": [
+    "  A",
+    " R ",
+    "O  "
+  ],
+  "research": {
+    "entry": "arcanelocomotion:spectral_rails",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:spectral_rail_rod"
+  },
+  "vis": 40
+}

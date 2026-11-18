@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "arcanelocomotion:greatwood_sleepers"
+  },
+  "result": {
+    "id": "arcanelocomotion:greatwood_sleepers_stairs",
+    "count": 1
+  }
+}

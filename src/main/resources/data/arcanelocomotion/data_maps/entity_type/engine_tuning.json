@@ -1,0 +1,8 @@
+{
+  "values": {
+    "arcanelocomotion:aura_locomotive": {
+      "vis_per_request": 0.5,
+      "fuel_per_request": 400
+    }
+  }
+}

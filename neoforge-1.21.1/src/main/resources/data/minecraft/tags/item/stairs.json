@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "arcanelocomotion:arcane_steel_plating_stairs",
+    "arcanelocomotion:void_steel_plating_stairs",
+    "arcanelocomotion:greatwood_sleepers_stairs",
+    "arcanelocomotion:runed_abyssal_bricks_stairs",
+    "arcanelocomotion:runed_quarried_bricks_stairs",
+    "arcanelocomotion:thaumium_banded_bricks_stairs"
+  ]
+}

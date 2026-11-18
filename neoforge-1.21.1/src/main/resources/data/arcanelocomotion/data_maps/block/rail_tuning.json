@@ -1,0 +1,15 @@
+{
+  "values": {
+    "arcanelocomotion:arcane_booster_track": {
+      "boost": 1.2,
+      "essentia_per_boost": 1
+    },
+    "arcanelocomotion:eldritch_rail": {
+      "max_speed": 0.9,
+      "warp_chance": 0.05
+    },
+    "arcanelocomotion:spectral_rail": {
+      "lifetime": 1200
+    }
+  }
+}

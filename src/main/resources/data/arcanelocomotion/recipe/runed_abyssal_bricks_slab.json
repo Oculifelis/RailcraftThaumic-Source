@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": "arcanelocomotion:runed_abyssal_bricks"
+  },
+  "pattern": [
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:runed_abyssal_bricks_slab",
+    "count": 6
+  }
+}

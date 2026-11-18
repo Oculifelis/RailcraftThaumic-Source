@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "arcanelocomotion:runed_quarried_bricks",
+  "result": {
+    "id": "arcanelocomotion:runed_quarried_bricks_slab",
+    "count": 2
+  }
+}

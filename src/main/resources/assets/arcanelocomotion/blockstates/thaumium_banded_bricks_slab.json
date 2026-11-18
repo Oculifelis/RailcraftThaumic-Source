@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "arcanelocomotion:block/thaumium_banded_bricks_slab"
+    },
+    "type=top": {
+      "model": "arcanelocomotion:block/thaumium_banded_bricks_slab_top"
+    },
+    "type=double": {
+      "model": "arcanelocomotion:block/thaumium_banded_bricks"
+    }
+  }
+}

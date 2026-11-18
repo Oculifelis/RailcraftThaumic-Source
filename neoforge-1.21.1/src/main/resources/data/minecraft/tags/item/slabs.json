@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "arcanelocomotion:arcane_steel_plating_slab",
+    "arcanelocomotion:void_steel_plating_slab",
+    "arcanelocomotion:greatwood_sleepers_slab",
+    "arcanelocomotion:runed_abyssal_bricks_slab",
+    "arcanelocomotion:runed_quarried_bricks_slab",
+    "arcanelocomotion:thaumium_banded_bricks_slab"
+  ]
+}

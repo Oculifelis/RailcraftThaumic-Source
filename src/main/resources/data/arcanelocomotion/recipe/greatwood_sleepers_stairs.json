@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": "arcanelocomotion:greatwood_sleepers"
+  },
+  "pattern": [
+    "S  ",
+    "SS ",
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:greatwood_sleepers_stairs",
+    "count": 4
+  }
+}

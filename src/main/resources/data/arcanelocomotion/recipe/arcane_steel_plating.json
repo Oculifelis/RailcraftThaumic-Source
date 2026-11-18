@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": "railcraft:steel_plate",
+    "C": "thaumaturge:nugget_thaumium"
+  },
+  "pattern": [
+    "SSS",
+    "SCS",
+    "SSS"
+  ],
+  "result": {
+    "id": "arcanelocomotion:arcane_steel_plating",
+    "count": 8
+  }
+}

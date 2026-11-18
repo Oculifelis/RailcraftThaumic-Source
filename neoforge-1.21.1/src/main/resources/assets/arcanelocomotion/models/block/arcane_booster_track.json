@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/rail_flat",
+  "textures": {
+    "rail": "arcanelocomotion:block/arcane_booster_track"
+  },
+  "render_type": "minecraft:cutout"
+}

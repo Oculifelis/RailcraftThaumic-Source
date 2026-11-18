@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "arcanelocomotion:thaumium_banded_bricks",
+  "result": {
+    "id": "arcanelocomotion:thaumium_banded_bricks_slab",
+    "count": 2
+  }
+}

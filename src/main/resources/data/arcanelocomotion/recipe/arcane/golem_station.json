@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:terra",
+      "amount": 2
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 2
+    }
+  ],
+  "key": {
+    "G": "thaumaturge:plank_greatwood",
+    "S": "thaumaturge:seal_blank",
+    "C": "minecraft:chest",
+    "H": "minecraft:hopper"
+  },
+  "pattern": [
+    "GSG",
+    "GCG",
+    "GHG"
+  ],
+  "research": {
+    "entry": "arcanelocomotion:golem_station",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:golem_station"
+  },
+  "vis": 25
+}

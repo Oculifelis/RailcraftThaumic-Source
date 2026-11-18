@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "arcanelocomotion:block/rune_signal"
+    },
+    "powered=true": {
+      "model": "arcanelocomotion:block/rune_signal_on"
+    }
+  }
+}

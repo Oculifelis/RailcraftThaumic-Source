@@ -1,0 +1,30 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    }
+  ],
+  "key": {
+    "I": {
+      "tag": "c:ingots/thaumium"
+    },
+    "R": {
+      "tag": "c:dyes/red"
+    }
+  },
+  "pattern": [
+    " RI",
+    "RIR",
+    "IR "
+  ],
+  "research": {
+    "entry": "arcanelocomotion:thaumium_crowbar",
+    "stage": 0
+  },
+  "result": {
+    "id": "arcanelocomotion:thaumium_crowbar"
+  },
+  "vis": 20
+}

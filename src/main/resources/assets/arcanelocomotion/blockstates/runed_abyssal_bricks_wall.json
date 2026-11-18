@@ -1,0 +1,231 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_post"
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_post_v1"
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_post_v2"
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_post_v3"
+        }
+      ],
+      "when": {
+        "up": "true"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side",
+          "uvlock": true
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v1",
+          "uvlock": true
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v2",
+          "uvlock": true
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v3",
+          "uvlock": true
+        }
+      ],
+      "when": {
+        "north": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v1",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v2",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v3",
+          "uvlock": true,
+          "y": 90
+        }
+      ],
+      "when": {
+        "east": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v1",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v2",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v3",
+          "uvlock": true,
+          "y": 180
+        }
+      ],
+      "when": {
+        "south": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v1",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v2",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_v3",
+          "uvlock": true,
+          "y": 270
+        }
+      ],
+      "when": {
+        "west": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v1",
+          "uvlock": true
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v2",
+          "uvlock": true
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v3",
+          "uvlock": true
+        }
+      ],
+      "when": {
+        "north": "tall"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v1",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v2",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v3",
+          "uvlock": true,
+          "y": 90
+        }
+      ],
+      "when": {
+        "east": "tall"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v1",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v2",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v3",
+          "uvlock": true,
+          "y": 180
+        }
+      ],
+      "when": {
+        "south": "tall"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v1",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v2",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "arcanelocomotion:block/runed_abyssal_bricks_wall_side_tall_v3",
+          "uvlock": true,
+          "y": 270
+        }
+      ],
+      "when": {
+        "west": "tall"
+      }
+    }
+  ]
+}

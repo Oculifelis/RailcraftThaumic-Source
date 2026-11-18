@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "arcanelocomotion:blocks/rune_signal",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "arcanelocomotion:rune_signal"
+        }
+      ]
+    }
+  ]
+}
