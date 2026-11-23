@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": "arcanelocomotion:runed_abyssal_bricks"
+    "S": {
+      "item": "arcanelocomotion:runed_abyssal_bricks"
+    }
   },
   "pattern": [
     "SSS"

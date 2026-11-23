@@ -20,7 +20,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Lays a short run of spectral rail forward from the block it is used on, in the direction the player faces. Each
@@ -47,7 +47,7 @@ public class SpectralRailRodItem extends Item {
         }
         int laid = lay(level, player, context.getClickedPos(), player.getDirection());
         if (laid == 0) {
-            player.sendOverlayMessage(Component.translatable("message.arcanelocomotion.rod_no_vis"));
+            player.displayClientMessage(Component.translatable("message.arcanelocomotion.rod_no_vis"), true);
             return InteractionResult.FAIL;
         }
         level.playSound(null, context.getClickedPos(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1f, 1.4f);
@@ -91,7 +91,9 @@ public class SpectralRailRodItem extends Item {
     }
 
     private static @Nullable ItemStack findWand(Player player) {
-        for (ItemStack s : player.getInventory()) {
+        var inventory = player.getInventory();
+        for (int i = 0; i < inventory.getContainerSize(); i++) {
+            ItemStack s = inventory.getItem(i);
             if (s.getItem() instanceof ItemWand) {
                 return s;
             }

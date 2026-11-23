@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": "arcanelocomotion:greatwood_sleepers"
+    "S": {
+      "item": "arcanelocomotion:greatwood_sleepers"
+    }
   },
   "pattern": [
     "S  ",

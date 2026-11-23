@@ -11,9 +11,15 @@
     }
   ],
   "key": {
-    "P": "thaumaturge:plate_void",
-    "E": "thaumaturge:eldritch_stone",
-    "M": "minecraft:minecart"
+    "P": {
+      "item": "thaumaturge:plate_void"
+    },
+    "E": {
+      "item": "thaumaturge:eldritch_stone"
+    },
+    "M": {
+      "item": "minecraft:minecart"
+    }
   },
   "pattern": [
     "PEP",

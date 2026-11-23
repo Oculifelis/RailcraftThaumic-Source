@@ -11,8 +11,12 @@
     }
   ],
   "key": {
-    "V": "thaumaturge:ingot_void",
-    "E": "thaumaturge:eldritch_stone"
+    "V": {
+      "item": "thaumaturge:ingot_void"
+    },
+    "E": {
+      "item": "thaumaturge:eldritch_stone"
+    }
   },
   "pattern": [
     "V V",

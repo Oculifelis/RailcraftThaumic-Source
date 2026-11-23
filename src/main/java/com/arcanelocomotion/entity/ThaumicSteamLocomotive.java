@@ -26,11 +26,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.transfer.fluid.FluidResource;
-import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 
 /**
  * Railcraft Reborn steam locomotive whose firebox burns Ignis essentia before it touches its solid fuel, and whose
@@ -53,7 +52,7 @@ public class ThaumicSteamLocomotive extends SteamLocomotive {
         boiler().setFuelProvider(new EssentiaFuel(new SolidFuelProvider(this, SOLID_FUEL_SLOT)));
     }
 
-    public static ThaumicSteamLocomotive create(ItemStack stack, Level level, double x, double y, double z) {
+    public static ThaumicSteamLocomotive create(ItemStack stack, double x, double y, double z, ServerLevel level) {
         ThaumicSteamLocomotive loco = new ThaumicSteamLocomotive(RTRegistry.THAUMIC_STEAM_LOCOMOTIVE.get(), level);
         loco.setPos(x, y, z);
         loco.xo = x;
@@ -114,11 +113,11 @@ public class ThaumicSteamLocomotive extends SteamLocomotive {
     }
 
     @Override
-    public InteractionResult interact(Player player, InteractionHand hand, Vec3 location) {
+    public InteractionResult interact(Player player, InteractionHand hand) {
         ItemStack held = player.getItemInHand(hand);
         IEssentiaItemStorage storage = held.getCapability(EssentiaCapabilities.ITEM_STORAGE);
         if (storage == null || storage.contents().isEmpty()) {
-            return super.interact(player, hand, location);
+            return super.interact(player, hand);
         }
         if (level().isClientSide()) {
             return InteractionResult.SUCCESS;
@@ -128,13 +127,13 @@ public class ThaumicSteamLocomotive extends SteamLocomotive {
             moved = pour(player, hand, storage, TTAspects.AQUA, AQUA);
         }
         if (moved == 0) {
-            return super.interact(player, hand, location);
+            return super.interact(player, hand);
         }
         storage = player.getItemInHand(hand).getCapability(EssentiaCapabilities.ITEM_STORAGE);
         if (storage != null) {
             storage.playTransferFeedback(player, IEssentiaItemStorage.TransferDirection.DRAIN);
         }
-        player.sendOverlayMessage(Component.translatable("message.arcanelocomotion.essentia", ignis(), aqua(), ESSENTIA_CAPACITY));
+        player.displayClientMessage(Component.translatable("message.arcanelocomotion.essentia", ignis(), aqua(), ESSENTIA_CAPACITY), true);
         return InteractionResult.SUCCESS;
     }
 
@@ -154,7 +153,7 @@ public class ThaumicSteamLocomotive extends SteamLocomotive {
     }
 
     @Override
-    protected void serverTick(net.minecraft.server.level.ServerLevel level) {
+    protected void serverTick(ServerLevel level) {
         super.serverTick(level);
         condenseAqua();
     }
@@ -164,26 +163,25 @@ public class ThaumicSteamLocomotive extends SteamLocomotive {
         if (aqua <= 0 || waterTank.getRemainingSpace() < WATER_PER_AQUA) {
             return;
         }
-        try (Transaction tx = Transaction.openRoot()) {
-            if (waterTank.insert(FluidResource.of(Fluids.WATER), WATER_PER_AQUA, tx) == WATER_PER_AQUA) {
-                tx.commit();
-                entityData.set(AQUA, aqua - 1);
-            }
+        FluidStack water = new FluidStack(Fluids.WATER, WATER_PER_AQUA);
+        if (waterTank.fill(water, IFluidHandler.FluidAction.SIMULATE) == WATER_PER_AQUA) {
+            waterTank.fill(water, IFluidHandler.FluidAction.EXECUTE);
+            entityData.set(AQUA, aqua - 1);
         }
     }
 
     @Override
-    protected void addAdditionalSaveData(ValueOutput output) {
+    public void addAdditionalSaveData(CompoundTag output) {
         super.addAdditionalSaveData(output);
         output.putInt("ignis", ignis());
         output.putInt("aqua", aqua());
     }
 
     @Override
-    protected void readAdditionalSaveData(ValueInput input) {
+    public void readAdditionalSaveData(CompoundTag input) {
         super.readAdditionalSaveData(input);
-        entityData.set(IGNIS, Math.clamp(input.getIntOr("ignis", 0), 0, ESSENTIA_CAPACITY));
-        entityData.set(AQUA, Math.clamp(input.getIntOr("aqua", 0), 0, ESSENTIA_CAPACITY));
+        entityData.set(IGNIS, Math.clamp(input.getInt("ignis"), 0, ESSENTIA_CAPACITY));
+        entityData.set(AQUA, Math.clamp(input.getInt("aqua"), 0, ESSENTIA_CAPACITY));
     }
 
     /** Burns a point of Ignis per firebox load; falls back to the locomotive's normal solid fuel. */
@@ -195,7 +193,7 @@ public class ThaumicSteamLocomotive extends SteamLocomotive {
         }
 
         @Override
-        public float consumeFuel(Level level) {
+        public float consumeFuel() {
             if (isShutdown()) {
                 return 0;
             }
@@ -204,7 +202,7 @@ public class ThaumicSteamLocomotive extends SteamLocomotive {
                 entityData.set(IGNIS, ignis - 1);
                 return HEAT_PER_IGNIS;
             }
-            return solid.consumeFuel(level);
+            return solid.consumeFuel();
         }
 
         @Override

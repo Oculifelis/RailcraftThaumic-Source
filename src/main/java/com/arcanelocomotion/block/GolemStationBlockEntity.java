@@ -4,17 +4,16 @@ import com.arcanelocomotion.RTRegistry;
 import java.util.UUID;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
+import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
-import net.neoforged.neoforge.transfer.transaction.TransactionContext;
-import org.jspecify.annotations.Nullable;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Stops a cart that rolls over it and holds it while golems (or hoppers, pipes, anything that uses an item handler on
@@ -31,7 +30,7 @@ public class GolemStationBlockEntity extends BlockEntity {
         super(RTRegistry.GOLEM_STATION_BE.get(), pos, state);
     }
 
-    public ResourceHandler<ItemResource> handler() {
+    public IItemHandler handler() {
         return proxy;
     }
 
@@ -47,12 +46,12 @@ public class GolemStationBlockEntity extends BlockEntity {
         return null;
     }
 
-    private static @Nullable ResourceHandler<ItemResource> items(@Nullable AbstractMinecart cart) {
+    private static @Nullable IItemHandler items(@Nullable AbstractMinecart cart) {
         if (cart == null) {
             return null;
         }
-        ResourceHandler<ItemResource> h = cart.getCapability(Capabilities.Item.ENTITY_AUTOMATION, Direction.DOWN);
-        return h != null ? h : cart.getCapability(Capabilities.Item.ENTITY, null);
+        IItemHandler h = cart.getCapability(Capabilities.ItemHandler.ENTITY_AUTOMATION, Direction.DOWN);
+        return h != null ? h : cart.getCapability(Capabilities.ItemHandler.ENTITY, null);
     }
 
     void serverTick() {
@@ -79,7 +78,7 @@ public class GolemStationBlockEntity extends BlockEntity {
                 return;
             }
         }
-        ResourceHandler<ItemResource> items = items(cart);
+        IItemHandler items = items(cart);
         boolean unload = level.getBlockState(worldPosition).getValue(GolemStationBlock.UNLOAD);
         if (items == null || level.hasNeighborSignal(worldPosition) || (unload ? isEmpty(items) : isFull(items))) {
             release(cart);
@@ -97,34 +96,26 @@ public class GolemStationBlockEntity extends BlockEntity {
         setChanged();
     }
 
-    static boolean isEmpty(ResourceHandler<ItemResource> h) {
-        for (int i = 0; i < h.size(); i++) {
-            if (!h.getResource(i).isEmpty() && h.getAmountAsLong(i) > 0) {
-                return false;
-            }
+    static boolean isEmpty(IItemHandler h) {
+        for (int i = 0; i < h.getSlots(); i++) {
+            if (!h.getStackInSlot(i).isEmpty()) return false;
         }
         return true;
     }
 
-    static boolean isFull(ResourceHandler<ItemResource> h) {
-        for (int i = 0; i < h.size(); i++) {
-            ItemResource r = h.getResource(i);
-            if (r.isEmpty()) {
-                return false;
-            }
-            long cap = Math.min(h.getCapacityAsLong(i, r), r.getMaxStackSize());
-            if (h.getAmountAsLong(i) < cap) {
-                return false;
-            }
+    static boolean isFull(IItemHandler h) {
+        for (int i = 0; i < h.getSlots(); i++) {
+            ItemStack stack = h.getStackInSlot(i);
+            if (stack.isEmpty() || stack.getCount() < Math.min(h.getSlotLimit(i), stack.getMaxStackSize())) return false;
         }
-        return h.size() > 0;
+        return h.getSlots() > 0;
     }
 
     @Override
-    protected void saveAdditional(ValueOutput output) {
-        super.saveAdditional(output);
+    protected void saveAdditional(CompoundTag output, HolderLookup.Provider registries) {
+        super.saveAdditional(output, registries);
         if (held != null) {
-            output.putString("held", held.toString());
+            output.putUUID("held", held);
             output.putDouble("mx", motion.x);
             output.putDouble("my", motion.y);
             output.putDouble("mz", motion.z);
@@ -132,64 +123,53 @@ public class GolemStationBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void loadAdditional(ValueInput input) {
-        super.loadAdditional(input);
-        held = input.getString("held").map(s -> {
-            try {
-                return UUID.fromString(s);
-            } catch (IllegalArgumentException e) {
-                return null;
-            }
-        }).orElse(null);
-        motion = new Vec3(input.getDoubleOr("mx", 0), input.getDoubleOr("my", 0), input.getDoubleOr("mz", 0));
+    protected void loadAdditional(CompoundTag input, HolderLookup.Provider registries) {
+        super.loadAdditional(input, registries);
+        held = input.hasUUID("held") ? input.getUUID("held") : null;
+        motion = new Vec3(input.getDouble("mx"), input.getDouble("my"), input.getDouble("mz"));
     }
 
     /** The held cart's inventory, seen through this block. Empty when no cart is held. */
-    private final class Proxy implements ResourceHandler<ItemResource> {
-        private @Nullable ResourceHandler<ItemResource> target() {
-            return items(heldCart());
+    private final class Proxy implements IItemHandler {
+        private @Nullable IItemHandler target(int slot) {
+            IItemHandler h = items(heldCart());
+            return h != null && slot >= 0 && slot < h.getSlots() ? h : null;
         }
 
         @Override
-        public int size() {
-            ResourceHandler<ItemResource> t = target();
-            return t == null ? 0 : t.size();
+        public int getSlots() {
+            IItemHandler h = items(heldCart());
+            return h == null ? 0 : h.getSlots();
         }
 
         @Override
-        public ItemResource getResource(int index) {
-            ResourceHandler<ItemResource> t = target();
-            return t == null || index >= t.size() ? ItemResource.EMPTY : t.getResource(index);
+        public ItemStack getStackInSlot(int slot) {
+            IItemHandler h = target(slot);
+            return h == null ? ItemStack.EMPTY : h.getStackInSlot(slot);
         }
 
         @Override
-        public long getAmountAsLong(int index) {
-            ResourceHandler<ItemResource> t = target();
-            return t == null || index >= t.size() ? 0 : t.getAmountAsLong(index);
+        public int getSlotLimit(int slot) {
+            IItemHandler h = target(slot);
+            return h == null ? 0 : h.getSlotLimit(slot);
         }
 
         @Override
-        public long getCapacityAsLong(int index, ItemResource resource) {
-            ResourceHandler<ItemResource> t = target();
-            return t == null || index >= t.size() ? 0 : t.getCapacityAsLong(index, resource);
+        public boolean isItemValid(int slot, ItemStack stack) {
+            IItemHandler h = target(slot);
+            return h != null && h.isItemValid(slot, stack);
         }
 
         @Override
-        public boolean isValid(int index, ItemResource resource) {
-            ResourceHandler<ItemResource> t = target();
-            return t != null && index < t.size() && t.isValid(index, resource);
+        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+            IItemHandler h = target(slot);
+            return h == null ? stack : h.insertItem(slot, stack, simulate);
         }
 
         @Override
-        public int insert(int index, ItemResource resource, int amount, TransactionContext tx) {
-            ResourceHandler<ItemResource> t = target();
-            return t == null || index >= t.size() ? 0 : t.insert(index, resource, amount, tx);
-        }
-
-        @Override
-        public int extract(int index, ItemResource resource, int amount, TransactionContext tx) {
-            ResourceHandler<ItemResource> t = target();
-            return t == null || index >= t.size() ? 0 : t.extract(index, resource, amount, tx);
+        public ItemStack extractItem(int slot, int amount, boolean simulate) {
+            IItemHandler h = target(slot);
+            return h == null ? ItemStack.EMPTY : h.extractItem(slot, amount, simulate);
         }
     }
 }

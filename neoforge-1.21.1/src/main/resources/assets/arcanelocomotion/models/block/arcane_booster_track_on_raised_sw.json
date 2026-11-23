@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/template_rail_raised_sw",
-  "textures": {
-    "rail": "arcanelocomotion:block/arcane_booster_track_on"
-  },
-  "render_type": "minecraft:cutout"
-}

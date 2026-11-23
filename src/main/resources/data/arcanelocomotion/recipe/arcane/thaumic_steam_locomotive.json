@@ -15,11 +15,21 @@
     }
   ],
   "key": {
-    "J": "thaumaturge:jar_normal",
-    "A": "thaumaturge:alchemical_construct",
-    "L": "railcraft:steam_locomotive",
-    "P": "thaumaturge:plate_thaumium",
-    "B": "thaumaturge:bellows"
+    "J": {
+      "item": "thaumaturge:jar_normal"
+    },
+    "A": {
+      "item": "thaumaturge:alchemical_construct"
+    },
+    "L": {
+      "item": "railcraft:steam_locomotive"
+    },
+    "P": {
+      "item": "thaumaturge:plate_thaumium"
+    },
+    "B": {
+      "item": "thaumaturge:bellows"
+    }
   },
   "pattern": [
     " J ",

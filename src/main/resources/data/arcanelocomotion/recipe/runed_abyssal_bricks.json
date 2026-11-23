@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": "railcraft:abyssal_bricks",
-    "C": "thaumaturge:salis_mundus"
+    "S": {
+      "item": "railcraft:abyssal_bricks"
+    },
+    "C": {
+      "item": "thaumaturge:salis_mundus"
+    }
   },
   "pattern": [
     "SSS",

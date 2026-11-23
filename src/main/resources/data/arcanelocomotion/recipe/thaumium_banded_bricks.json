@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": "minecraft:bricks",
-    "C": "thaumaturge:ingot_thaumium"
+    "S": {
+      "item": "minecraft:bricks"
+    },
+    "C": {
+      "item": "thaumaturge:ingot_thaumium"
+    }
   },
   "pattern": [
     "SSS",

@@ -12,19 +12,18 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
+import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.HolderLookup;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
-import org.jspecify.annotations.Nullable;
+import net.neoforged.neoforge.items.IItemHandler;
+import org.jetbrains.annotations.Nullable;
 
 /** Holds the tuned aspect and checks the cart above every few ticks. */
 public class RuneSignalBlockEntity extends BlockEntity {
@@ -75,7 +74,7 @@ public class RuneSignalBlockEntity extends BlockEntity {
 
     public Component status() {
         return aspect == null ? RuneSignalBlock.unset()
-                : Component.translatable("message.arcanelocomotion.rune_tuned", aspect.identifier().getPath());
+                : Component.translatable("message.arcanelocomotion.rune_tuned", aspect.location().getPath());
     }
 
     void serverTick() {
@@ -103,19 +102,19 @@ public class RuneSignalBlockEntity extends BlockEntity {
             Holder<IAspect> held = tank.aspect();
             return held != null && held.is(key);
         }
-        ResourceHandler<ItemResource> items = cart.getCapability(Capabilities.Item.ENTITY_AUTOMATION, Direction.UP);
+        IItemHandler items = cart.getCapability(Capabilities.ItemHandler.ENTITY_AUTOMATION, Direction.UP);
         if (items == null) {
-            items = cart.getCapability(Capabilities.Item.ENTITY, null);
+            items = cart.getCapability(Capabilities.ItemHandler.ENTITY, null);
         }
         if (items == null) {
             return false;
         }
-        for (int i = 0; i < items.size(); i++) {
-            ItemResource res = items.getResource(i);
-            if (res.isEmpty() || items.getAmountAsLong(i) <= 0) {
+        for (int i = 0; i < items.getSlots(); i++) {
+            ItemStack res = items.getStackInSlot(i);
+            if (res.isEmpty()) {
                 continue;
             }
-            for (Holder<IAspect> h : AspectIndexAccess.of(res.toStack()).aspects()) {
+            for (Holder<IAspect> h : AspectIndexAccess.of(res).aspects()) {
                 if (h.is(key)) {
                     return true;
                 }
@@ -125,16 +124,16 @@ public class RuneSignalBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(ValueOutput output) {
-        super.saveAdditional(output);
+    protected void saveAdditional(CompoundTag output, HolderLookup.Provider registries) {
+        super.saveAdditional(output, registries);
         if (aspect != null) {
-            output.putString("aspect", aspect.identifier().toString());
+            output.putString("aspect", aspect.location().toString());
         }
     }
 
     @Override
-    protected void loadAdditional(ValueInput input) {
-        super.loadAdditional(input);
-        aspect = input.getString("aspect").map(Identifier::tryParse).map(id -> ResourceKey.create(IAspect.REGISTRY_KEY, id)).orElse(null);
+    protected void loadAdditional(CompoundTag input, HolderLookup.Provider registries) {
+        super.loadAdditional(input, registries);
+        aspect = java.util.Optional.ofNullable(ResourceLocation.tryParse(input.getString("aspect"))).map(id -> ResourceKey.create(IAspect.REGISTRY_KEY, id)).orElse(null);
     }
 }

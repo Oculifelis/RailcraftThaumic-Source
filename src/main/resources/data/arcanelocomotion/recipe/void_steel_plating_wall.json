@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": "arcanelocomotion:void_steel_plating"
+    "S": {
+      "item": "arcanelocomotion:void_steel_plating"
+    }
   },
   "pattern": [
     "SSS",

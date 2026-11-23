@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": "thaumaturge:plank_greatwood",
-    "C": "railcraft:creosote_bucket"
+    "S": {
+      "item": "thaumaturge:plank_greatwood"
+    },
+    "C": {
+      "item": "railcraft:creosote_bucket"
+    }
   },
   "pattern": [
     "SSS",

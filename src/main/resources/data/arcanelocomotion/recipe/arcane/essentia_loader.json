@@ -11,10 +11,18 @@
     }
   ],
   "key": {
-    "P": "thaumaturge:plate_brass",
-    "T": "thaumaturge:tube",
-    "J": "thaumaturge:jar_normal",
-    "H": "minecraft:hopper"
+    "P": {
+      "item": "thaumaturge:plate_brass"
+    },
+    "T": {
+      "item": "thaumaturge:tube"
+    },
+    "J": {
+      "item": "thaumaturge:jar_normal"
+    },
+    "H": {
+      "item": "minecraft:hopper"
+    }
   },
   "pattern": [
     "PTP",

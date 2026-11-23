@@ -1,6 +1,8 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "arcanelocomotion:void_steel_plating",
+  "ingredient": {
+    "item": "arcanelocomotion:void_steel_plating"
+  },
   "result": {
     "id": "arcanelocomotion:void_steel_plating_slab",
     "count": 2

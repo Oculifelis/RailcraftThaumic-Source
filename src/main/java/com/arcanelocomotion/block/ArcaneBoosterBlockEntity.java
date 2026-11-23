@@ -18,16 +18,16 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
+import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.PoweredRailBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 /** The booster rail's Motus reservoir and its kick. */
 public class ArcaneBoosterBlockEntity extends BlockEntity implements IEssentiaTransport {
@@ -76,7 +76,7 @@ public class ArcaneBoosterBlockEntity extends BlockEntity implements IEssentiaTr
                 }
             }
         }
-        player.sendOverlayMessage(status());
+        player.displayClientMessage(status(), true);
         return true;
     }
 
@@ -194,14 +194,14 @@ public class ArcaneBoosterBlockEntity extends BlockEntity implements IEssentiaTr
     }
 
     @Override
-    protected void saveAdditional(ValueOutput output) {
-        super.saveAdditional(output);
+    protected void saveAdditional(CompoundTag output, HolderLookup.Provider registries) {
+        super.saveAdditional(output, registries);
         output.putInt("motus", motus);
     }
 
     @Override
-    protected void loadAdditional(ValueInput input) {
-        super.loadAdditional(input);
-        motus = Math.clamp(input.getIntOr("motus", 0), 0, CAPACITY);
+    protected void loadAdditional(CompoundTag input, HolderLookup.Provider registries) {
+        super.loadAdditional(input, registries);
+        motus = Math.clamp(input.getInt("motus"), 0, CAPACITY);
     }
 }

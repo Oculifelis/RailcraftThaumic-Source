@@ -20,9 +20,9 @@ public class AuraLocomotive extends ElectricLocomotive {
         super(type, level);
     }
 
-    public static AuraLocomotive create(ItemStack stack, Level level, double x, double y, double z) {
+    public static AuraLocomotive create(ItemStack stack, double x, double y, double z, net.minecraft.server.level.ServerLevel level) {
         AuraLocomotive loco = new AuraLocomotive(RTRegistry.AURA_LOCOMOTIVE.get(), level);
-        loco.setInitialPos(x, y, z);
+        loco.setPos(x, y, z);
         loco.loadFromItemStack(stack);
         return loco;
     }

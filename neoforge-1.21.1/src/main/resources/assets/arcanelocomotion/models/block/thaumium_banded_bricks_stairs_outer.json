@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "arcanelocomotion:block/thaumium_banded_bricks",
-    "top": "arcanelocomotion:block/thaumium_banded_bricks",
-    "side": "arcanelocomotion:block/thaumium_banded_bricks"
-  }
-}

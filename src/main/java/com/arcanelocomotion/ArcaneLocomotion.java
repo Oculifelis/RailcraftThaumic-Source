@@ -1,11 +1,10 @@
 package com.arcanelocomotion;
 
-import com.arcanelocomotion.gametest.RTGameTests;
 import com.leclowndu93150.thaumaturge.api.essentia.EssentiaCapabilities;
 import com.mojang.logging.LogUtils;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
@@ -23,17 +22,16 @@ public final class ArcaneLocomotion {
     public ArcaneLocomotion(IEventBus modBus) {
         RTRegistry.register(modBus);
         RTDataMaps.register(modBus);
-        RTGameTests.register(modBus);
         modBus.addListener(ArcaneLocomotion::capabilities);
     }
 
     private static void capabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(EssentiaCapabilities.TRANSPORT, RTRegistry.ESSENTIA_LOADER_BE.get(), (be, dir) -> be);
         event.registerBlockEntity(EssentiaCapabilities.TRANSPORT, RTRegistry.ARCANE_BOOSTER_BE.get(), (be, dir) -> be);
-        event.registerBlockEntity(Capabilities.Item.BLOCK, RTRegistry.GOLEM_STATION_BE.get(), (be, dir) -> be.handler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, RTRegistry.GOLEM_STATION_BE.get(), (be, dir) -> be.handler());
     }
 
-    public static Identifier id(String path) {
-        return Identifier.fromNamespaceAndPath(MODID, path);
+    public static ResourceLocation id(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 }

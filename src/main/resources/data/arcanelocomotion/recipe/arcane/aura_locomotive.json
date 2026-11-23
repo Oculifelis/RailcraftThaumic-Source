@@ -11,11 +11,21 @@
     }
   ],
   "key": {
-    "R": "thaumaturge:vis_resonator",
-    "A": "thaumaturge:crystal_aer",
-    "L": "railcraft:electric_locomotive",
-    "P": "thaumaturge:plate_thaumium",
-    "B": "thaumaturge:vis_battery"
+    "R": {
+      "item": "thaumaturge:vis_resonator"
+    },
+    "A": {
+      "item": "thaumaturge:crystal_aer"
+    },
+    "L": {
+      "item": "railcraft:electric_locomotive"
+    },
+    "P": {
+      "item": "thaumaturge:plate_thaumium"
+    },
+    "B": {
+      "item": "thaumaturge:vis_battery"
+    }
   },
   "pattern": [
     " R ",

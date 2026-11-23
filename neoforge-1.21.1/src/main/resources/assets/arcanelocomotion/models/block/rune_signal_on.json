@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "arcanelocomotion:block/rune_signal_top_on",
-    "side": "arcanelocomotion:block/rune_signal_side_on"
-  }
-}

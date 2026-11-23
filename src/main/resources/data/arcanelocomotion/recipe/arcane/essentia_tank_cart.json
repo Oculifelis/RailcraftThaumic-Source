@@ -11,9 +11,15 @@
     }
   ],
   "key": {
-    "P": "thaumaturge:plate_brass",
-    "J": "thaumaturge:jar_normal",
-    "M": "minecraft:minecart"
+    "P": {
+      "item": "thaumaturge:plate_brass"
+    },
+    "J": {
+      "item": "thaumaturge:jar_normal"
+    },
+    "M": {
+      "item": "minecraft:minecart"
+    }
   },
   "pattern": [
     "PJP",

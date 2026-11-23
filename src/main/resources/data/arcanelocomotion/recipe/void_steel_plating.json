@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": "railcraft:steel_plate",
-    "C": "thaumaturge:nugget_void"
+    "S": {
+      "item": "railcraft:steel_plate"
+    },
+    "C": {
+      "item": "thaumaturge:nugget_void"
+    }
   },
   "pattern": [
     "SSS",

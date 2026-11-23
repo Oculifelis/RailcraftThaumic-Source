@@ -2,10 +2,10 @@ package com.arcanelocomotion.block;
 
 import java.util.List;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
+import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 /** Railside machines sit under a rail and act on the cart standing on it. */
 public final class TrackBed {

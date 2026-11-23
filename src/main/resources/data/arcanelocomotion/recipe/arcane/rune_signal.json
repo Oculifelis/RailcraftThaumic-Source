@@ -11,10 +11,18 @@
     }
   ],
   "key": {
-    "S": "thaumaturge:stone_arcane_brick",
-    "X": "thaumaturge:salis_mundus",
-    "R": "minecraft:redstone",
-    "C": "railcraft:receiver_circuit"
+    "S": {
+      "item": "thaumaturge:stone_arcane_brick"
+    },
+    "X": {
+      "item": "thaumaturge:salis_mundus"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "railcraft:receiver_circuit"
+    }
   },
   "pattern": [
     "SXS",

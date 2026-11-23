@@ -11,10 +11,18 @@
     }
   ],
   "key": {
-    "G": "thaumaturge:plank_greatwood",
-    "S": "thaumaturge:seal_blank",
-    "C": "minecraft:chest",
-    "H": "minecraft:hopper"
+    "G": {
+      "item": "thaumaturge:plank_greatwood"
+    },
+    "S": {
+      "item": "thaumaturge:seal_blank"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    },
+    "H": {
+      "item": "minecraft:hopper"
+    }
   },
   "pattern": [
     "GSG",

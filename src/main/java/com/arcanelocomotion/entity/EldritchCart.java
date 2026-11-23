@@ -16,39 +16,44 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * A rideable cart of eldritch make. On eldritch rail it runs far past a normal cart's top speed, but each new rail it
  * crosses there may leave a little temporary warp on its rider. Fireproof, and creatures cannot break it.
  */
-public class EldritchCart extends net.minecraft.world.entity.vehicle.minecart.Minecart {
+public class EldritchCart extends net.minecraft.world.entity.vehicle.Minecart {
     private @Nullable BlockPos lastRail;
 
     public EldritchCart(EntityType<?> type, Level level) {
         super(type, level);
     }
 
-    public static EldritchCart create(ItemStack stack, Level level, double x, double y, double z) {
+    public static EldritchCart create(ItemStack stack, double x, double y, double z, net.minecraft.server.level.ServerLevel level) {
         EldritchCart cart = new EldritchCart(RTRegistry.ELDRITCH_CART.get(), level);
-        cart.setInitialPos(x, y, z);
+        cart.setPos(x, y, z);
         return cart;
     }
 
+    private BlockPos railPos() {
+        BlockPos pos = blockPosition();
+        return level().getBlockState(pos.below()).is(net.minecraft.tags.BlockTags.RAILS) ? pos.below() : pos;
+    }
+
     private @Nullable BlockState eldritchRailUnder() {
-        BlockState state = level().getBlockState(getCurrentBlockPosOrRailBelow());
+        BlockState state = level().getBlockState(railPos());
         return state.is(RTRegistry.ELDRITCH_RAIL.get()) ? state : null;
     }
 
     @Override
-    protected double getMaxSpeed(ServerLevel level) {
+    public double getMaxSpeedWithRail() {
         BlockState rail = eldritchRailUnder();
-        return rail == null ? super.getMaxSpeed(level) : RTDataMaps.rail(rail.getBlock()).maxSpeed();
+        return rail == null ? super.getMaxSpeedWithRail() : RTDataMaps.rail(rail.getBlock()).maxSpeed();
     }
 
     /** The top speed here, as the cart's own movement uses it (for tests and tooltips). */
     public double topSpeed(ServerLevel level) {
-        return getMaxSpeed(level);
+        return getMaxSpeedWithRail();
     }
 
     @Override
@@ -62,7 +67,7 @@ public class EldritchCart extends net.minecraft.world.entity.vehicle.minecart.Mi
             lastRail = null;
             return;
         }
-        BlockPos here = getCurrentBlockPosOrRailBelow();
+        BlockPos here = railPos();
         if (!here.equals(lastRail)) {
             lastRail = here;
             double chance = RTDataMaps.rail(rail.getBlock()).warpChance();
@@ -95,11 +100,11 @@ public class EldritchCart extends net.minecraft.world.entity.vehicle.minecart.Mi
     }
 
     @Override
-    public boolean hurtServer(ServerLevel level, DamageSource source, float damage) {
+    public boolean hurt(DamageSource source, float damage) {
         if (source.is(DamageTypeTags.IS_FIRE) || source.getEntity() instanceof Mob) {
             return false;
         }
-        return super.hurtServer(level, source, damage);
+        return super.hurt(source, damage);
     }
 
     @Override

@@ -25,6 +25,14 @@ public class SpectralRailBlock extends RailBlock {
         return true;
     }
 
+    /** 1.21.1 checks support directly when neighbours change, bypassing canSurvive. */
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block source, BlockPos sourcePos, boolean movedByPiston) {
+        if (!level.isClientSide() && level.getBlockState(pos).is(this)) {
+            updateState(state, level, pos, source);
+        }
+    }
+
     @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         super.onPlace(state, level, pos, oldState, movedByPiston);

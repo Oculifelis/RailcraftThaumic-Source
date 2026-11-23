@@ -11,9 +11,15 @@
     }
   ],
   "key": {
-    "A": "thaumaturge:crystal_aer",
-    "O": "thaumaturge:crystal_ordo",
-    "R": "thaumaturge:wand_rod_greatwood"
+    "A": {
+      "item": "thaumaturge:crystal_aer"
+    },
+    "O": {
+      "item": "thaumaturge:crystal_ordo"
+    },
+    "R": {
+      "item": "thaumaturge:wand_rod_greatwood"
+    }
   },
   "pattern": [
     "  A",

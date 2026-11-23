@@ -14,7 +14,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -22,18 +22,18 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
+import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * A minecart carrying a warded jar: one aspect of essentia, up to {@link #CAPACITY} points. Jars and phials used on it
@@ -48,9 +48,9 @@ public class EssentiaTankCart extends AbstractMinecart {
         super(type, level);
     }
 
-    public static EssentiaTankCart create(ItemStack stack, Level level, double x, double y, double z) {
+    public static EssentiaTankCart create(ItemStack stack, double x, double y, double z, ServerLevel level) {
         EssentiaTankCart cart = new EssentiaTankCart(RTRegistry.ESSENTIA_TANK_CART.get(), level);
-        cart.setInitialPos(x, y, z);
+        cart.setPos(x, y, z);
         AspectInstance load = stack.get(RTRegistry.CART_ESSENTIA.get());
         if (load != null && load.amount() > 0) {
             cart.set(load.aspect(), Math.min(load.amount(), CAPACITY));
@@ -74,7 +74,7 @@ public class EssentiaTankCart extends AbstractMinecart {
         if (id.isEmpty() || amount() <= 0) {
             return null;
         }
-        Identifier rl = Identifier.tryParse(id);
+        ResourceLocation rl = ResourceLocation.tryParse(id);
         if (rl == null) {
             return null;
         }
@@ -86,7 +86,7 @@ public class EssentiaTankCart extends AbstractMinecart {
             entityData.set(ASPECT, "");
             entityData.set(AMOUNT, 0);
         } else {
-            entityData.set(ASPECT, aspect.unwrapKey().map(k -> k.identifier().toString()).orElse(""));
+            entityData.set(ASPECT, aspect.unwrapKey().map(k -> k.location().toString()).orElse(""));
             entityData.set(AMOUNT, amount);
         }
     }
@@ -118,11 +118,11 @@ public class EssentiaTankCart extends AbstractMinecart {
     }
 
     @Override
-    public InteractionResult interact(Player player, InteractionHand hand, Vec3 location) {
+    public InteractionResult interact(Player player, InteractionHand hand) {
         ItemStack held = player.getItemInHand(hand);
         IEssentiaItemStorage storage = held.getCapability(EssentiaCapabilities.ITEM_STORAGE);
         if (storage == null) {
-            return super.interact(player, hand, location);
+            return super.interact(player, hand);
         }
         if (level().isClientSide()) {
             return InteractionResult.SUCCESS;
@@ -135,7 +135,7 @@ public class EssentiaTankCart extends AbstractMinecart {
                 after.playTransferFeedback(player, draw ? IEssentiaItemStorage.TransferDirection.FILL : IEssentiaItemStorage.TransferDirection.DRAIN);
             }
         }
-        player.sendOverlayMessage(status());
+        player.displayClientMessage(status(), true);
         return InteractionResult.SUCCESS;
     }
 
@@ -181,12 +181,16 @@ public class EssentiaTankCart extends AbstractMinecart {
     }
 
     @Override
-    public BlockState getDefaultDisplayBlockState() {
-        return BuiltInRegistries.BLOCK.getOptional(Identifier.fromNamespaceAndPath("thaumaturge", "jar_normal"))
-                .map(Block::defaultBlockState).orElse(Blocks.GLASS.defaultBlockState());
+    public Type getMinecartType() {
+        return Type.CHEST;
     }
 
     @Override
+    public BlockState getDefaultDisplayBlockState() {
+        return BuiltInRegistries.BLOCK.getOptional(ResourceLocation.fromNamespaceAndPath("thaumaturge", "jar_normal"))
+                .map(Block::defaultBlockState).orElse(Blocks.GLASS.defaultBlockState());
+    }
+
     protected Item getDropItem() {
         return RTRegistry.ESSENTIA_TANK_CART_ITEM.get();
     }
@@ -203,26 +207,26 @@ public class EssentiaTankCart extends AbstractMinecart {
 
     /** Drops the cart item with its load on it. */
     @Override
-    protected void destroy(ServerLevel level, DamageSource source) {
-        kill(level);
-        if (level.getGameRules().get(GameRules.ENTITY_DROPS)) {
+    public void destroy(DamageSource source) {
+        kill();
+        if (level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
             ItemStack stack = getPickResult();
             stack.set(DataComponents.CUSTOM_NAME, getCustomName());
-            spawnAtLocation(level, stack);
+            spawnAtLocation(stack);
         }
     }
 
     @Override
-    protected void addAdditionalSaveData(ValueOutput output) {
+    protected void addAdditionalSaveData(CompoundTag output) {
         super.addAdditionalSaveData(output);
         output.putString("aspect", entityData.get(ASPECT));
         output.putInt("amount", amount());
     }
 
     @Override
-    protected void readAdditionalSaveData(ValueInput input) {
+    protected void readAdditionalSaveData(CompoundTag input) {
         super.readAdditionalSaveData(input);
-        entityData.set(ASPECT, input.getStringOr("aspect", ""));
-        entityData.set(AMOUNT, Math.clamp(input.getIntOr("amount", 0), 0, CAPACITY));
+        entityData.set(ASPECT, input.getString("aspect"));
+        entityData.set(AMOUNT, Math.clamp(input.getInt("amount"), 0, CAPACITY));
     }
 }

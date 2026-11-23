@@ -7,8 +7,12 @@
     }
   ],
   "key": {
-    "I": "#c:ingots/thaumium",
-    "R": "#c:dyes/red"
+    "I": {
+      "tag": "c:ingots/thaumium"
+    },
+    "R": {
+      "tag": "c:dyes/red"
+    }
   },
   "pattern": [
     " RI",
