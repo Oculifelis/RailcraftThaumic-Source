@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "arcanelocomotion:block/greatwood_sleepers",
-    "top": "arcanelocomotion:block/greatwood_sleepers",
-    "side": "arcanelocomotion:block/greatwood_sleepers"
-  }
-}

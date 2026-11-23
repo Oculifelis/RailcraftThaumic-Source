@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "arcanelocomotion:block/greatwood_sleepers",
-    "top": "arcanelocomotion:block/greatwood_sleepers",
-    "side": "arcanelocomotion:block/greatwood_sleepers"
-  }
-}

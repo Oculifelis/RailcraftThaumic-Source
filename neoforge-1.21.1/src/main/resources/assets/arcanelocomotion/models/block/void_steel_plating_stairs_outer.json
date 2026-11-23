@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "arcanelocomotion:block/void_steel_plating",
-    "top": "arcanelocomotion:block/void_steel_plating",
-    "side": "arcanelocomotion:block/void_steel_plating"
-  }
-}

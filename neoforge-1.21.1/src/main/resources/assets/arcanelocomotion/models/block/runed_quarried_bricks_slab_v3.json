@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "arcanelocomotion:block/runed_quarried_bricks_3",
-    "top": "arcanelocomotion:block/runed_quarried_bricks_3",
-    "side": "arcanelocomotion:block/runed_quarried_bricks_3"
-  }
-}

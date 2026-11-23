@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "top": "arcanelocomotion:block/essentia_loader_top",
-    "bottom": "arcanelocomotion:block/essentia_loader_bottom",
-    "side": "arcanelocomotion:block/essentia_loader_side"
-  }
-}
