@@ -6,3 +6,4 @@ libs/*.jar
 .idea/
 out/
 neoforge-1.21.1/libs/*.jar
+/docs/SCOPE-NEXT.md
